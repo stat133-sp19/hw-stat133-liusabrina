@@ -1,0 +1,59 @@
+---
+title: "Workout 1"
+author: "Sabrina Liu"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r echo=FALSE, message=FALSE}
+library(readr)
+library(dplyr)
+```
+
+asdf
+
+```{r warning=FALSE, echo=FALSE}
+data = read_csv('../data/shots-data.csv', col_types='-------f-f----f')
+data$total = 1
+data$made = c(0,1)[data$shot_made_flag]
+```
+
+asdf
+
+```{r echo=FALSE}
+data1 = filter(data, shot_type=='2PT Field Goal')
+t1 = group_by(data1, name) %>% summarize(total=sum(total), made=sum(made))
+t1$perc_made = t1$made / t1$total
+t1 = t1 %>% arrange(desc(perc_made))
+t1
+```
+
+asdf
+
+```{r echo=FALSE}
+data2 = filter(data, shot_type=='3PT Field Goal')
+t2 = group_by(data2, name) %>% summarize(total=sum(total), made=sum(made))
+t2$perc_made = t2$made / t2$total
+t2 = t2 %>% arrange(desc(perc_made))
+t2
+```
+
+asdf
+
+```{r echo=FALSE}
+t3 = group_by(data, name) %>% summarize(total=sum(total), made=sum(made))
+t3$perc_made = t3$made / t3$total
+t3 = t3 %>% arrange(desc(perc_made))
+t3
+```
+
+asdf
+
+```{r out.width='80%', echo=FALSE, fig.align='center'}
+knitr::include_graphics('../images/gsw-shot-charts.png')
+```
+

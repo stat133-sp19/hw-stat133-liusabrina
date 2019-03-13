@@ -1,5 +1,5 @@
 # title: Shot Charts
-# description:
+# description: Produces shot maps for different players
 # input(s): court image, one table of shot data for each of the five players, one table of shot data for all the players combined
 # output(s): one pdf for each of the five players' shot charts, one pdf with the 5 shot charts together, one png with the 5 shot charts together
 

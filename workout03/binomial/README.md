@@ -8,5 +8,5 @@ The package `"binomial"` gives users many insights into the binomial distributio
 - `plot()` method for a `"bindis"` object to plot the probability histogram of successes
 - `bin_cumulative()` calculates the probability distribution and the cumulative distribution given a number of trials and a success probability, producing a data frame of class `"bincum"`
 - `plot()` method for a `"bincum"` object to plot the cumulative distribution of successes
-    - `bin_variable()` returns the parameters of the binomial in an easy-to-read format, internally producing an object of class `"binvar"`
+- `bin_variable()` returns the parameters of the binomial in an easy-to-read format, internally producing an object of class `"binvar"`
 - `summary()` method for a `"binvar"` object to return parameters and summary measures of the binomial in an easy-to-read format

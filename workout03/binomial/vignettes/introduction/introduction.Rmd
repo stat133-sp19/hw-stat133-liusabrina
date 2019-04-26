@@ -1,0 +1,95 @@
+---
+title: "introduction"
+author: "Sabrina Liu"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+source('../../R/main-functions-and-methods.R')
+```
+
+## **The Binomial Package**
+
+The package "binomial" gives users many insights into the binomial distribution, including calculating probabilities, plotting both the probability distribution and the cumulative distribution, and calculating various summary statistics.
+
+#### **bin_choose**
+
+This function calculates the number of combinations in which you can choose _k_ things in _n_ picks. In the context of the binomial, this function will calculate the number of combinations in which _k_ successes can occur in _n_ trials. It takes two arguments, the first being the _n_ trials and the second being the _k_ successes. Both inputs must be non-negative integers.
+
+```{r}
+bin_choose(n=5, k=2)
+```
+
+#### **bin_probability**
+
+This function calculates the probability of getting _k_ successes in _n_ trials assuming the probability of success is _p_. It takes in three arguments, the first being the number of successes, the second being the number of trials, the third being the probability of success. The first two inputs must be non-negative integers. THe probability must be a number between 0 and 1, inclusive.
+
+```{r}
+bin_probability(success = 55, trials = 100, prob = 0.45)
+```
+
+#### **bin_distribution**
+
+This function calculates the probability distribution given a number of trials and a probability of success. It takes in two arguments, the first being a non-negative integer for the number of trials and the second being a number between 0 and 1, inclusive, as the probability of success. The output will be a two column data frame with a column of every success possibility given the number of trials and the other column being the corresponding probabilities for each given success value. The column labels will be 'success' and 'probability'. The data frame outputted will have classes of 'bindis' and 'data.frame'.
+
+```{r}
+bin_dis = bin_distribution(trials = 5, prob = 0.5)
+bin_dis
+```
+
+```{r}
+class(bin_dis)
+```
+
+#### **Plot of Binomial's Probability Distribution**
+
+You can use the function `plot()` to graph a barplot that displays the probability histogram of a binomial distribution object. By passing in an object with class `bindis`, like the output from using `bin_distribution`,`plot()` will recognize the class and provide the desired plot output.
+
+```{r}
+dis1 <- bin_distribution(trials = 5, prob = 0.5)
+plot(dis1)
+```
+
+#### **bin_cumulative**
+
+This function calculates the probability distribution and the cumulative distribution given a number of trials and a probability of success. It takes in two arguments, the first being a non-negative integer for the number of trials and the second being a number between 0 and 1, inclusive, as the probability of success. The output will be a three column data frame with a column of every success possibility given the number of trials, a column with the corresponding probabilities for each given success value, and a column with the cumulative sum of the probabilities of the previous column. The column labels will be 'success', 'probability', and 'cumulative'. The data frame outputted will have classes of 'bincum' and 'data.frame'.
+
+```{r}
+bin_cum = bin_cumulative(trials = 5, prob = 0.5)
+bin_cum
+```
+
+```{r}
+class(bin_cum)
+```
+
+#### **Plot of Binomial's Cumulative Probability Distribution**
+
+You can use the function `plot()` to display the cumulative probability distribution of a cumulative binomial distribution object. By passing in an object with class `bincum`, like the output from using `bin_cumulative`,`plot()` will recognize the class and provide the desired plot output.
+
+```{r}
+dis2 <- bin_cumulative(trials = 5, prob = 0.5)
+plot(dis2)
+```
+
+#### **Binomial Random Variable**
+
+You can use this function to return a description of your binomial parameters. The function takes two arguments, the first being a non-negative integer number of trials and the second being a number between 0 and 1, inclusive, that represents the probability of success. The output will show the number of trials and the probability of success in easy-to-read formatting.
+
+```{r}
+bin_variable(trials = 5, prob = 0.5)
+```
+
+#### **Binomial Summary Statistics**
+
+You can use this function to obtain many of the common summary measures for a binomial variable. The function takes two arguments, the first being a non-negative integer number of trials and the second being a number between 0 and 1, inclusive, that represents the probability of success. The output will show parameters of number of trials and probability of success, along with mean, variance, mode, skewness, and kurtosis in easy-to-read formatting.
+
+```{r}
+bin1 <- bin_variable(trials = 10, p = 0.3)
+summary(bin1)
+```
+
